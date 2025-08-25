@@ -20,7 +20,7 @@ The aim is to deliver a clear analysis of sales performance, highlighting which 
 	•	Snowflake – Data storage and processing
 	•	SQL – Data cleaning, transformation, and aggregation
 	•	Microsoft Excel – Pivot tables, charts, and analysis
-	•	GOOGLE Looker– Interactive dashboards and data visualization
+	•	GOOGLE Looker& PowerBI– Interactive dashboards and data visualization
 	
 # Summary of Results
 The analysis revealed that coffee contributes to more than 70% of total revenue, with peak sales occurring in the morning hours. Certain products underperformed, presenting opportunities for targeted promotions. Recommendations include stocking more of the best-selling items, running marketing campaigns during low-sales periods, and automating sales reporting for future scalability.
