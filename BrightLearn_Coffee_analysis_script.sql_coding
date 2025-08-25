@@ -1,0 +1,42 @@
+SELECT *
+FROM "SALES"."PUBLIC"."RETAIL_SALES"
+LIMIT 10;
+
+SELECT MIN(transaction_time) AS opening_time
+FROM "SALES"."PUBLIC"."RETAIL_SALES";
+
+SELECT MAX(transaction_time) AS closing_time
+FROM "SALES"."PUBLIC"."RETAIL_SALES";
+
+-- DATES
+SELECT 
+    TO_DATE(transaction_date) AS transaction_date,
+    DAYOFMONTH(TO_DATE(transaction_date)) AS day_of_month,
+    DAYNAME(TO_DATE(transaction_date)) AS day_name,
+    MONTHNAME(TO_DATE(transaction_date)) AS month_name,
+    TO_CHAR(TO_DATE(transaction_date), 'YYYYMM') AS month_id,
+    CASE
+        WHEN transaction_time BETWEEN '06:00:00' AND '11:59:59' THEN 'Morning'
+        WHEN transaction_time BETWEEN '12:00:00' AND '16:59:59' THEN 'Afternoon'
+        WHEN transaction_time BETWEEN '17:00:00' AND '19:59:59' THEN 'Evening'
+        ELSE 'Night'
+    END AS time_bucket,
+    COUNT(DISTINCT transaction_id) AS number_of_sales,
+    COUNT(DISTINCT product_id) AS number_of_unique_products,
+    COUNT(DISTINCT store_id) AS number_of_shops,
+    store_location,
+    product_category,
+    product_detail,
+    product_type
+FROM "SALES"."PUBLIC"."RETAIL_SALES"
+GROUP BY 
+    transaction_date,
+    day_of_month,
+    day_name,
+    month_name,
+    month_id,
+    time_bucket,
+    store_location,
+    product_category,
+    product_detail,
+    product_type;
